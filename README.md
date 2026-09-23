@@ -8,7 +8,7 @@ Source for <https://bundledcontactgradients.github.io>, the public project page 
 
 ## The two copies of this page
 
-There are two project pages, and only this one carries the author names:
+There are two project pages, and only this one carries the author names: 
 
 | | |
 | --- | --- |
