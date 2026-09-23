@@ -1,0 +1,673 @@
+/* ---------------------------------------------------------------------------
+   Bundled Contact Gradients — project page styles
+   Built on the Nerfies project-page template.
+   --------------------------------------------------------------------------- */
+
+:root {
+  --bcg-blue: #2f6fb5;   /* bundled gradient (paper figures) */
+  --bcg-red: #c0453c;    /* per-rollout gradients (paper figures) */
+  --bcg-ink: #363636;
+  --bcg-muted: #7a8290;
+  --bcg-line: #d5d9e0;
+}
+
+body {
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.footer .icon-link {
+  font-size: 25px;
+  color: #000;
+}
+
+.link-block a {
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+
+.bcg {
+  font-variant: small-caps;
+  font-weight: 600;
+  color: var(--bcg-blue);
+}
+
+
+/* --- Video hero -----------------------------------------------------------
+   Adapted from the ViBe project page (lok-i.github.io/vibe-control): a
+   full-bleed looping video behind the title, a scrim to keep the text legible,
+   and the title block floated on top.  The video is the film's hardware
+   footage, cut by tools/build_site_media.py.
+   --------------------------------------------------------------------------- */
+
+.project-hero {
+  position: relative;
+  min-height: 100svh;
+  overflow: hidden;
+  background: #171819;
+}
+
+.project-hero-media,
+.project-hero-scrim {
+  position: absolute;
+  inset: 0;
+}
+
+.project-hero-media {
+  z-index: 0;
+  background: radial-gradient(circle, #25282c 0%, #111315 68%, #090a0b 100%);
+}
+
+.project-hero-video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center center;
+}
+
+.project-hero-scrim {
+  z-index: 1;
+  background:
+    linear-gradient(rgba(5, 8, 12, 0.42) 0%, rgba(5, 8, 12, 0.52) 54%, rgba(5, 8, 12, 0.68) 100%),
+    linear-gradient(90deg, rgba(5, 8, 12, 0.20), transparent 32%, transparent 68%, rgba(5, 8, 12, 0.20));
+}
+
+.project-hero .hero-body {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  width: 100%;
+  align-items: center;
+  padding: 4rem 1.5rem;
+}
+
+.project-hero .publication-title {
+  color: #fff;
+  font-size: clamp(2.15rem, 5vw, 4rem);
+  line-height: 1.08;
+  text-shadow: 0 2px 18px rgba(0, 0, 0, 0.72);
+}
+
+.project-hero .publication-subtitle {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 10px rgba(0, 0, 0, 0.8);
+  margin-top: 0.35rem !important;
+}
+
+.project-hero .publication-authors,
+.project-hero .publication-affiliations,
+.project-hero .publication-venue {
+  color: rgba(255, 255, 255, 0.92);
+  text-shadow: 0 1px 8px rgba(0, 0, 0, 0.9);
+}
+
+.project-hero .publication-links .button {
+  border: 1px solid rgba(255, 255, 255, 0.24);
+  background: rgba(16, 18, 20, 0.78);
+  box-shadow: 0 6px 24px rgba(0, 0, 0, 0.22);
+  color: #fff;
+  backdrop-filter: blur(8px);
+}
+
+.project-hero .publication-links a.button:not(.is-disabled):hover {
+  border-color: rgba(255, 255, 255, 0.52);
+  background: rgba(6, 7, 8, 0.9);
+}
+
+/* Phones play the same loop, from a smaller encode picked in index.html.  The
+   poster sits behind it so there is an image on screen immediately, and if
+   autoplay is refused (iOS low-power mode) it is what stays visible. */
+@media screen and (max-width: 768px) {
+  .project-hero { min-height: 82svh; }
+  .project-hero-media {
+    background: url("../images/hero_poster.jpg") center center / cover no-repeat #111315;
+  }
+}
+
+
+/* --- Title block ----------------------------------------------------------- */
+
+.publication-title {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-subtitle {
+  font-family: 'Google Sans', sans-serif;
+  color: #4a4a4a;
+  margin-top: -0.75rem !important;
+  margin-bottom: 1.5rem !important;
+  font-weight: 400;
+}
+
+.publication-authors {
+  font-family: 'Google Sans', sans-serif;
+}
+
+.publication-authors a {
+  color: hsl(204, 86%, 53%) !important;
+}
+
+.publication-authors a:hover {
+  text-decoration: underline;
+}
+
+.author-block {
+  display: inline-block;
+}
+
+/* Sits under the named author line. */
+.publication-affiliations {
+  font-family: 'Google Sans', sans-serif;
+  margin-top: 0.35rem;
+}
+
+.affiliation-block {
+  display: inline-block;
+}
+
+.affiliation-block + .affiliation-block {
+  margin-left: 0.9rem;
+}
+
+/* Institution logos ---------------------------------------------------------- */
+
+.publication-logos {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.9rem 2rem;
+  margin: 1.1rem auto 0;
+  width: fit-content;
+}
+
+/* tools/build_logos.py trims each file tight to its ink, so one shared height
+   is enough to put all four on the same optical height. */
+.publication-logos img {
+  display: block;
+  width: auto;
+  height: 38px;
+}
+
+/* ETH is a single-line wordmark where the others are stacked lockups or a mark,
+   so at a shared height it reads heavier than the rest; nudge it down. */
+.logo-eth {
+  height: 33px;
+}
+
+/* The logos are white ink on transparency, matching the hero's white text, so
+   they get the same shadow that keeps that text legible over a bright frame. */
+.project-hero .publication-logos img {
+  filter: drop-shadow(0 1px 8px rgba(0, 0, 0, 0.9));
+}
+
+@media screen and (max-width: 768px) {
+  .publication-logos { gap: 0.8rem 1.6rem; }
+  .publication-logos img { height: 28px; }
+  .logo-eth { height: 24px; }
+}
+
+.publication-venue-line {
+  margin-top: 0.5rem;
+}
+
+.publication-venue {
+  color: #555;
+  font-weight: bold;
+}
+
+.publication-awards {
+  color: #ff3860;
+  width: fit-content;
+  font-weight: bolder;
+}
+
+.button.is-disabled,
+.button.is-disabled:hover {
+  opacity: 0.45;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+
+/* --- Sections -------------------------------------------------------------- */
+
+.section .title.is-3 {
+  font-family: 'Google Sans', sans-serif;
+  border-bottom: 2px solid var(--bcg-line);
+  padding-bottom: 0.4rem;
+  margin-bottom: 1.5rem;
+}
+
+.is-light-section {
+  background-color: #fafbfc;
+  border-top: 1px solid #eef0f3;
+  border-bottom: 1px solid #eef0f3;
+}
+
+.caption {
+  font-size: 0.85rem;
+  color: #5a6068;
+  line-height: 1.45;
+  margin-top: 0.6rem;
+  text-align: center;
+}
+
+.caption b {
+  color: var(--bcg-ink);
+}
+
+
+/* --- Media: real videos/images and their placeholders ---------------------- */
+
+.result-media {
+  display: block;
+  width: 100%;
+  height: auto;
+  border: 1px solid #e3e6ea;
+  border-radius: 10px;
+  background: #fff;
+}
+
+.media-placeholder {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  padding: 1.25rem;
+  text-align: center;
+  color: var(--bcg-muted);
+  border: 2px dashed #c9cdd4;
+  border-radius: 10px;
+  background: repeating-linear-gradient(45deg,
+      #fbfcfd, #fbfcfd 12px, #f3f5f8 12px, #f3f5f8 24px);
+}
+
+.media-placeholder.is-16by9 { aspect-ratio: 16 / 9; }
+.media-placeholder.is-4by3  { aspect-ratio: 4 / 3; }
+.media-placeholder.is-wide  { aspect-ratio: 21 / 9; }
+
+.media-placeholder .ph-icon {
+  font-size: 1.9rem;
+  color: #b3b9c2;
+  line-height: 1;
+}
+
+.media-placeholder .ph-title {
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #5d6570;
+  max-width: 34rem;
+}
+
+.media-placeholder .ph-path {
+  font-size: 0.72rem;
+  color: #868d97;
+  background: rgba(255, 255, 255, 0.85);
+  border: 1px solid #e0e3e8;
+  border-radius: 4px;
+  padding: 0.1rem 0.45rem;
+}
+
+
+/* --- Method steps ---------------------------------------------------------- */
+
+.method-steps .step-card {
+  height: 100%;
+  background: #fff;
+  border: 1px solid #e6e9ed;
+  border-top: 3px solid var(--bcg-blue);
+  border-radius: 8px;
+  padding: 1.25rem 1.25rem 0.75rem;
+}
+
+.method-steps .step-index {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 1.7rem;
+  height: 1.7rem;
+  border-radius: 50%;
+  background: var(--bcg-blue);
+  color: #fff;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-bottom: 0.6rem;
+}
+
+.method-steps .step-card p {
+  font-size: 0.92rem;
+  line-height: 1.5;
+  margin-bottom: 0.7rem;
+}
+
+.method-steps .step-card .title {
+  margin-bottom: 0.6rem;
+}
+
+/* The three cards are narrow; keep their display math inside the card. */
+.method-steps .eq {
+  font-size: 0.78rem;
+}
+
+/* Display math must never widen the page: let it scroll inside its own box. */
+.eq {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  font-size: 0.9rem;
+}
+
+.eq mjx-container[display="true"],
+mjx-container[display="true"] {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  margin: 0.5em 0 !important;
+}
+
+/* Flex/grid children default to min-width:auto, which lets wide content push
+   the page sideways. */
+.columns > .column,
+.step-card,
+.content {
+  min-width: 0;
+}
+
+
+/* --- Pipeline walk-through ------------------------------------------------- */
+
+.pipeline-cues {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+}
+
+.pipeline-cue {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  margin: 0;
+  padding: 0.6rem 0.8rem;
+  border-left: 3px solid transparent;
+  border-radius: 0 6px 6px 0;
+  cursor: pointer;
+  transition: background-color 0.25s ease, border-color 0.25s ease, opacity 0.25s ease;
+  opacity: 0.55;
+}
+
+.pipeline-cue p {
+  margin: 0;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--bcg-ink);
+}
+
+.pipeline-cue:hover {
+  opacity: 0.85;
+}
+
+.pipeline-cue.is-active {
+  opacity: 1;
+  background: #eef4fb;
+  border-left-color: var(--bcg-blue);
+}
+
+/* Without JS nothing is marked active, so every step reads at full strength. */
+.pipeline-cues:not(.is-synced) .pipeline-cue {
+  opacity: 1;
+  cursor: default;
+}
+
+.pipeline-cue .pipeline-index {
+  background: var(--bcg-muted);
+  transition: background-color 0.25s ease;
+}
+
+.pipeline-cue.is-active .pipeline-index {
+  background: var(--bcg-blue);
+}
+
+.pipeline-index {
+  flex: 0 0 auto;
+  width: 1.7rem;
+  height: 1.7rem;
+  line-height: 1.7rem;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--bcg-blue);
+  color: #fff;
+  font-family: 'Google Sans', sans-serif;
+  font-size: 0.86rem;
+  font-weight: 700;
+}
+
+
+/* --- Gradient phases ------------------------------------------------------- */
+
+.ph-fwd { color: #2f9e4f; }
+.ph-bwd { color: #d2801e; }
+
+
+/* --- Limitations ----------------------------------------------------------- */
+
+.limitation {
+  border-left: 3px solid var(--bcg-line);
+  padding: 0.1rem 0 0.1rem 1.15rem;
+  margin-bottom: 1.9rem;
+}
+
+.limitation .title.is-5 {
+  margin-bottom: 0.5rem;
+}
+
+.limitation .content {
+  margin-bottom: 0;
+}
+
+
+/* --- Tables ---------------------------------------------------------------- */
+
+.results-table th,
+.params-table th {
+  font-family: 'Google Sans', sans-serif;
+  color: var(--bcg-ink);
+  vertical-align: middle;
+}
+
+.results-table thead th {
+  border-bottom: 2px solid var(--bcg-line);
+}
+
+.results-table tbody tr.is-selected-row {
+  background-color: #eef4fb;
+}
+
+.params-table td {
+  font-size: 0.9rem;
+  border-bottom: 1px solid #edeff2;
+}
+
+.params-table tbody tr:hover {
+  background-color: #fafbfc;
+}
+
+.tbd {
+  display: inline-block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #9a6a12;
+  background: #fdf3dc;
+  border: 1px solid #f2e2b6;
+  border-radius: 3px;
+  padding: 0.05rem 0.4rem;
+}
+
+
+/* --- Misc ------------------------------------------------------------------ */
+
+.publication-video {
+  position: relative;
+  width: 100%;
+  height: 0;
+  padding-bottom: 56.25%;
+  overflow: hidden;
+  border-radius: 10px !important;
+}
+
+.publication-video iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.results-carousel {
+  overflow: hidden;
+}
+
+.results-carousel .item {
+  margin: 5px;
+  overflow: hidden;
+  border: 1px solid #bbb;
+  border-radius: 10px;
+  padding: 0;
+  font-size: 0;
+}
+
+.results-carousel video {
+  margin: 0;
+}
+
+@media screen and (max-width: 768px) {
+  .media-placeholder.is-wide { aspect-ratio: 16 / 9; }
+  .media-placeholder .ph-title { font-size: 0.85rem; }
+  .method-steps .step-card { margin-bottom: 1rem; }
+}
+
+
+/* --- Citations -------------------------------------------------------------- */
+
+a.cite {
+  white-space: nowrap;
+}
+
+.references {
+  list-style: none;
+  margin: 0;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: #3a3f45;
+}
+
+.references li {
+  padding: 0.3rem 0.5rem;
+  border-radius: 6px;
+  scroll-margin-top: 1rem;
+}
+
+.references li:target {
+  background: #fff6d6;
+}
+
+
+/* --- Contact-scaling plot (Method overview) --------------------------------- */
+
+.contact-plot {
+  --cp-k50: #6da7ec;
+  --cp-k100: #256abf;
+  --cp-k300: #0d366b;
+  max-width: 560px;
+  margin: 0.5rem auto 2.5rem;
+}
+
+.contact-plot-legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.35rem 1.25rem;
+  font-size: 0.85rem;
+  color: var(--bcg-ink);
+  margin-bottom: 0.25rem;
+}
+
+.contact-plot-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.cp-swatch {
+  display: inline-block;
+  width: 18px;
+  height: 2px;
+  border-radius: 1px;
+}
+.cp-swatch.cp-k50  { background: var(--cp-k50); }
+.cp-swatch.cp-k100 { background: var(--cp-k100); }
+.cp-swatch.cp-k300 { background: var(--cp-k300); }
+
+.contact-plot-frame {
+  position: relative;
+}
+
+.contact-plot-svg {
+  display: block;
+  width: 100%;
+  height: auto;
+  overflow: visible;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.cp-grid    { stroke: #e6e8ec; stroke-width: 1; }
+.cp-axis    { stroke: #b9bec6; stroke-width: 1; }
+.cp-contact { stroke: #b9bec6; stroke-width: 1; stroke-dasharray: 3 4; }
+.cp-tick    { font-size: 13px; fill: var(--bcg-muted); }
+.cp-label   { font-size: 14px; fill: #5a6068; }
+
+.cp-line {
+  fill: none;
+  stroke-width: 2;
+  stroke-linejoin: round;
+  stroke-linecap: round;
+}
+.cp-line.cp-k50  { stroke: var(--cp-k50); }
+.cp-line.cp-k100 { stroke: var(--cp-k100); }
+.cp-line.cp-k300 { stroke: var(--cp-k300); }
+
+.cp-hover { visibility: hidden; pointer-events: none; }
+.contact-plot.is-hovering .cp-hover { visibility: visible; }
+.cp-cross { stroke: #9aa1ab; stroke-width: 1; }
+.cp-dot { stroke: #fafbfc; stroke-width: 2; }
+.cp-dot.cp-k50  { fill: var(--cp-k50); }
+.cp-dot.cp-k100 { fill: var(--cp-k100); }
+.cp-dot.cp-k300 { fill: var(--cp-k300); }
+.cp-hit { cursor: crosshair; }
+
+.contact-plot-tip {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none;
+  padding: 0.4rem 0.6rem;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: var(--bcg-ink);
+  background: #fff;
+  border: 1px solid #e3e6ea;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  pointer-events: none;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.contact-plot.is-hovering .contact-plot-tip { display: block; }
+.contact-plot-tip .cp-row { display: flex; align-items: center; gap: 0.4rem; }
+.contact-plot-tip .cp-row b { margin-left: auto; padding-left: 0.75rem; font-weight: 600; }
