@@ -155,6 +155,13 @@ body {
   display: inline-block;
 }
 
+/* The author list is split into hand-balanced rows in index.html rather than
+   left to wrap on its own, but the rows should still read as one block, so
+   keep them tighter than the default line box. */
+.author-row {
+  line-height: 1.35;
+}
+
 /* Sits under the named author line. */
 .publication-affiliations {
   font-family: 'Google Sans', sans-serif;

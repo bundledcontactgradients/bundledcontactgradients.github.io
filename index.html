@@ -98,21 +98,29 @@
           <div class="is-size-5 publication-authors" id="authors-named">
             <!-- Drop the <a> wrapper for anyone without a homepage, and keep the <sup>
                  numbers in sync with the affiliations below.  Separators live inside
-                 each block so the line wraps cleanly. -->
-            <span class="author-block">
-              <a href="https://dyumanaditya.github.io/">Dyuman Aditya</a><sup>1</sup>,&nbsp;</span>
-            <span class="author-block">
-              <a href="https://jin-cheng.me/">Jin Cheng</a><sup>2</sup>,&nbsp;</span>
-            <span class="author-block">
-              <a href="https://linkedin.com/in/clemensschwarke">Clemens Schwarke</a><sup>2,3</sup>,&nbsp;</span>
-            <span class="author-block">
-              <a href="https://viterbi.usc.edu/directory/faculty/Nguyen/Quan">Quan Nguyen</a><sup>1</sup>,&nbsp;</span>
-            <span class="author-block">
-              <a href="https://viterbi.usc.edu/directory/faculty/Sukhatme/Gaurav">Gaurav Sukhatme</a><sup>1</sup>,&nbsp;</span>
-            <span class="author-block">
-              <a href="https://crl.ethz.ch/people/coros/index.html">Stelian Coros</a><sup>2</sup>,&nbsp;</span>
-            <span class="author-block">
-              <a href="https://www.linkedin.com/in/gabriele-fadini-643b71180/">Gabriele Fadini</a><sup>4</sup></span>
+                 each block so a row wraps cleanly if it still has to.
+
+                 The list is split across two .author-row lines by hand (3 then 4) so
+                 that it breaks evenly; left to wrap on its own it drops a single name
+                 onto the second line.  Re-balance these rows when the list changes. -->
+            <div class="author-row">
+              <span class="author-block">
+                <a href="https://dyumanaditya.github.io/">Dyuman Aditya</a><sup>1</sup>,&nbsp;</span>
+              <span class="author-block">
+                <a href="https://jin-cheng.me/">Jin Cheng</a><sup>2</sup>,&nbsp;</span>
+              <span class="author-block">
+                <a href="https://linkedin.com/in/clemensschwarke">Clemens Schwarke</a><sup>2,3</sup>,</span>
+            </div>
+            <div class="author-row">
+              <span class="author-block">
+                <a href="https://viterbi.usc.edu/directory/faculty/Nguyen/Quan">Quan Nguyen</a><sup>1</sup>,&nbsp;</span>
+              <span class="author-block">
+                <a href="https://viterbi.usc.edu/directory/faculty/Sukhatme/Gaurav">Gaurav Sukhatme</a><sup>1</sup>,&nbsp;</span>
+              <span class="author-block">
+                <a href="https://crl.ethz.ch/people/coros/index.html">Stelian Coros</a><sup>2</sup>,&nbsp;</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/gabriele-fadini-643b71180/">Gabriele Fadini</a><sup>4</sup></span>
+            </div>
           </div>
 
           <div class="is-size-6 publication-affiliations" id="authors-affiliations">
