@@ -4,7 +4,7 @@ Source for <https://bundledcontactgradients.github.io>, the public project page 
 
 > **Bundled Contact Gradients: Stabilizing Differentiable Simulation for Deployable Dynamic Tasks**
 > Dyuman Aditya, Jin Cheng, Clemens Schwarke, Quan Nguyen, Gaurav Sukhatme,
-> Marco Hutter, Stelian Coros, Gabriele Fadini
+> Stelian Coros, Gabriele Fadini
 
 ## The two copies of this page
 
